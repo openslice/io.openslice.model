@@ -15,18 +15,19 @@
 
 package io.openslice.model;
 
-import javax.persistence.Entity;
+public enum DeploymentDescriptorStatus {
 
-/**
- * @author ctranoris
- * different defined user roles
- */
-@Entity(name = "UserRoleType")
-public enum UserRoleType {
-
-	PORTALADMIN,
-	EXPERIMENTER,
-	VXF_DEVELOPER,
-	TESTBED_PROVIDER,
-	MENTOR
+		UNDER_REVIEW,
+		SCHEDULED,
+		REJECTED,
+		RUNNING,
+		TERMINATED,
+		INSTANTIATING,
+		FAILED,
+		TERMINATING,
+		TERMINATION_FAILED,
+		COMPLETED,
+		FAILED_OSM_REMOVED,
+		DELETION_FAILED
 }
+

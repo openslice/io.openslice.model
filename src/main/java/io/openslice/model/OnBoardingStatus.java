@@ -15,18 +15,11 @@
 
 package io.openslice.model;
 
-import javax.persistence.Entity;
-
-/**
- * @author ctranoris
- * different defined user roles
- */
-@Entity(name = "UserRoleType")
-public enum UserRoleType {
-
-	PORTALADMIN,
-	EXPERIMENTER,
-	VXF_DEVELOPER,
-	TESTBED_PROVIDER,
-	MENTOR
+public enum OnBoardingStatus {
+	UNKNOWN,
+	FAILED,
+	ONBOARDED,
+	OFFBOARDED,
+	OFFBOARDING,
+	ONBOARDING
 }

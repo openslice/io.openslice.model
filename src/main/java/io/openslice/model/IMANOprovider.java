@@ -15,18 +15,21 @@
 
 package io.openslice.model;
 
-import javax.persistence.Entity;
-
 /**
  * @author ctranoris
- * different defined user roles
+ * 
+ * Describes a MANO provider that can be accessed via an API
+ *
  */
-@Entity(name = "UserRoleType")
-public enum UserRoleType {
+public interface IMANOprovider {
 
-	PORTALADMIN,
-	EXPERIMENTER,
-	VXF_DEVELOPER,
-	TESTBED_PROVIDER,
-	MENTOR
+	public String getName();
+	
+	public String getDescription();
+	
+	public MANOplatform getSupportedMANOplatform();
+	
+	public String getApiEndpoint();
+	
+	
 }

@@ -15,18 +15,20 @@
 
 package io.openslice.model;
 
-import javax.persistence.Entity;
+public enum InstalledVxFStatus {
 
-/**
- * @author ctranoris
- * different defined user roles
- */
-@Entity(name = "UserRoleType")
-public enum UserRoleType {
-
-	PORTALADMIN,
-	EXPERIMENTER,
-	VXF_DEVELOPER,
-	TESTBED_PROVIDER,
-	MENTOR
+	INIT,
+	DOWNLOADING,
+	DOWNLOADED,
+	INSTALLING,
+	INSTALLED,
+	STARTING,
+	STARTED,
+	CONFIGURING,
+	STOPPING,
+	STOPPED,
+	UNINSTALLING,
+	UNINSTALLED,
+	FAILED
+	
 }

@@ -15,18 +15,35 @@
 
 package io.openslice.model;
 
-import javax.persistence.Entity;
 
-/**
- * @author ctranoris
- * different defined user roles
- */
-@Entity(name = "UserRoleType")
-public enum UserRoleType {
+public class UserSession {
 
-	PORTALADMIN,
-	EXPERIMENTER,
-	VXF_DEVELOPER,
-	TESTBED_PROVIDER,
-	MENTOR
+
+	private String username = null;
+	private String password = null;
+	private PortalUser portalUser = null;
+	
+	
+	
+	public UserSession() {
+		super();
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public PortalUser getPortalUser() {
+		return portalUser;
+	}
+	public void setPortalUser(PortalUser portalUser) {
+		this.portalUser = portalUser;
+	}
 }
