@@ -44,8 +44,8 @@ public class MANOprovider implements IMANOprovider {
 	@Basic()
 	private String description = null;
 
-	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, fetch = FetchType.EAGER)
-	@JoinTable()
+	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinTable( name = "MANOplatform" )
 	private MANOplatform supportedMANOplatform;
 	
 

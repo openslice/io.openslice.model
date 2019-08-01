@@ -16,12 +16,13 @@
 package io.openslice.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * @author ctranoris
  * different defined user roles
  */
-@Entity(name = "UserRoleType")
+
 public enum UserRoleType {
 
 	PORTALADMIN,
@@ -29,4 +30,5 @@ public enum UserRoleType {
 	VXF_DEVELOPER,
 	TESTBED_PROVIDER,
 	MENTOR
+	
 }

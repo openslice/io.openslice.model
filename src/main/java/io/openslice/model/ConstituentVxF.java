@@ -41,8 +41,8 @@ public class ConstituentVxF {
 	@Basic()
 	private String vnfdidRef;
 	
-	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, fetch = FetchType.EAGER)
-	@JoinTable()
+	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH } )
+	@JoinTable( name = "VxFMetadata" )
 	private VxFMetadata vxfref;
 
 	public int getMembervnfIndex() {

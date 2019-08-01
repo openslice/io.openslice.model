@@ -16,11 +16,13 @@
 package io.openslice.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -31,6 +33,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -45,7 +49,7 @@ public class PortalUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id = 0;
+	private long id = 0;
 
 	@Basic()
 	private String organization = null;
@@ -65,18 +69,22 @@ public class PortalUser {
 	private String currentSessionID = null;
 	@Basic()
 	private String apikey = null;
+	@CreationTimestamp
+	private Date createdAt;
+	
 	
 	/**
 	 * 
 	 */
-	@ElementCollection(targetClass=UserRoleType.class, fetch = FetchType.EAGER)
+	@ElementCollection(targetClass=UserRoleType.class)
 	@Enumerated(EnumType.ORDINAL)
+    @Column(columnDefinition = "smallint")
 	private List<UserRoleType> roles = new ArrayList<UserRoleType>();
 	
 	/**
 	 * 
 	 */
-	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, fetch = FetchType.EAGER)
+	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH } )
 	@JoinTable()
 	private List<Product> products = new ArrayList<Product>();
 	
@@ -84,7 +92,7 @@ public class PortalUser {
 	/**
 	 * 
 	 */
-	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  }, fetch = FetchType.EAGER)
+	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  } )
 	@JoinTable()
 	private List<VFImage> vfimages = new ArrayList<VFImage>();
 	
@@ -93,11 +101,11 @@ public class PortalUser {
 		return roles;
 	}
 
-	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  }, fetch = FetchType.EAGER)
+	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  } )
 	@JoinTable()
 	private List<DeploymentDescriptor> deployments = new ArrayList<DeploymentDescriptor>();
 	
-	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  }, fetch = FetchType.EAGER)
+	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  } )
 	@JoinTable()
 	private List<SubscribedResource> subscribedResources = new ArrayList<SubscribedResource>();
 	
@@ -192,11 +200,11 @@ public class PortalUser {
 //		vxfs = newVxFs;
 //	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int newId) {
+	public void setId(long newId) {
 		id = newId;
 	}
 
@@ -316,6 +324,22 @@ public class PortalUser {
 	 */
 	public void setApikey(String apikey) {
 		this.apikey = apikey;
+	}
+	
+	
+
+	/**
+	 * @return the createdAt
+	 */
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	/**
+	 * @param createdAt the createdAt to set
+	 */
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	@JsonIgnore
