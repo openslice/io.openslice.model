@@ -237,10 +237,11 @@ public class PortalUser {
 	@JsonProperty
 	public void setPassword(String password) {
 
-		if ( (password!=null) && (!password.equals("")))//else will not change it
-			this.password = EncryptionUtil.hash(password);
-		
-		//this.password = password;
+		this.password = password;
+//		if ( (password!=null) && (!password.equals("")))//else will not change it
+//			this.password = EncryptionUtil.hash(password);
+//		
+//		//this.password = password;
 	}
 	
 	public void setPasswordUnencrypted(String password) {
