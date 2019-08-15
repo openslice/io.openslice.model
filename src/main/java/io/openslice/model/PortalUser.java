@@ -77,8 +77,8 @@ public class PortalUser {
 	 * 
 	 */
 	@ElementCollection(targetClass=UserRoleType.class)
-	@Enumerated(EnumType.ORDINAL)
-    @Column(columnDefinition = "smallint")
+	@Enumerated(EnumType.STRING)
+	@Column(name = "role_type")
 	private List<UserRoleType> roles = new ArrayList<UserRoleType>();
 	
 	/**

@@ -15,9 +15,6 @@
 
 package io.openslice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  * @author ctranoris
  * different defined user roles
@@ -25,10 +22,34 @@ import javax.persistence.Id;
 
 public enum UserRoleType {
 
-	PORTALADMIN,
-	EXPERIMENTER,
-	VXF_DEVELOPER,
-	TESTBED_PROVIDER,
-	MENTOR
+	ROLE_ADMIN("ROLE_ADMIN"),
+	ROLE_EXPERIMENTER("ROLE_EXPERIMENTER"),
+	ROLE_VXF_DEVELOPER("ROLE_VXF_DEVELOPER"),
+	ROLE_TESTBED_PROVIDER("ROLE_TESTBED_PROVIDER"),
+	ROLE_MENTOR("ROLE_MENTOR");
+	
+	
+	
+
+    private String value;
+
+	UserRoleType(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return this.getValue();
+    }
+
+    public static UserRoleType getEnum(String value) {
+        for(UserRoleType v : values())
+            if(v.getValue().equalsIgnoreCase(value)) return v;
+        throw new IllegalArgumentException();
+    }
 	
 }
