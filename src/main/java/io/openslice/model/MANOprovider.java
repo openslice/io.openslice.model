@@ -22,7 +22,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -36,7 +39,7 @@ public class MANOprovider implements IMANOprovider {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id = 0;
+	private long id = 0;
 
 	@Basic()
 	private String name = null;
@@ -44,8 +47,9 @@ public class MANOprovider implements IMANOprovider {
 	@Basic()
 	private String description = null;
 
-	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinTable( name = "MANOplatform" )
+
+    @ManyToOne
+    @JoinColumn(name="MP_ID", nullable=false)
 	private MANOplatform supportedMANOplatform;
 	
 
@@ -99,12 +103,12 @@ public class MANOprovider implements IMANOprovider {
 	}
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

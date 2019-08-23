@@ -48,7 +48,7 @@ public class ExperimentMetadata extends Product{
 	/**
 	 * 
 	 */
-	private PackagingFormat packagingFormat = PackagingFormat.OSMvTWO;
+	private PackagingFormat packagingFormat = PackagingFormat.OSMvFIVE;
 	
 	/**
 	 * @return

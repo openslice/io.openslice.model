@@ -16,9 +16,6 @@
 package io.openslice.model;
 
 public enum PackagingFormat {
-
-	OSMvTWO,
-	TOSCA,
-	OSMvFOUR,
-	OSMvFIVE
+	OSMvFIVE,
+	OSMvFSIX
 }

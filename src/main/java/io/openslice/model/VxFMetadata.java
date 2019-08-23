@@ -49,7 +49,7 @@ public class VxFMetadata extends Product{
 	/**
 	 * 
 	 */
-	private PackagingFormat packagingFormat = PackagingFormat.OSMvTWO;
+	private PackagingFormat packagingFormat = PackagingFormat.OSMvFIVE;
 	
 	
 	
