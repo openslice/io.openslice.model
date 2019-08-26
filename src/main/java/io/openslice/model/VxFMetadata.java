@@ -71,7 +71,7 @@ public class VxFMetadata extends Product{
 	@JoinTable()
 	private List<VxFOnBoardedDescriptor> vxfOnBoardedDescriptors = new ArrayList<VxFOnBoardedDescriptor>();
 	
-	 @ManyToMany(cascade = {  CascadeType.ALL  } )
+	 @ManyToMany(cascade = {   CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH  } )
 	 @JoinTable(
 	            name="VXF_VFIMAGES",
 	            joinColumns = @JoinColumn( name="VXF_ID"),
