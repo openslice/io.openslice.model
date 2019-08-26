@@ -16,13 +16,17 @@
 package io.openslice.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 
@@ -67,9 +71,13 @@ public class VxFMetadata extends Product{
 	@JoinTable()
 	private List<VxFOnBoardedDescriptor> vxfOnBoardedDescriptors = new ArrayList<VxFOnBoardedDescriptor>();
 	
-	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  })
-	@JoinTable()
-	private List<VFImage> vfimagesVDU = new ArrayList<>();
+	 @ManyToMany(cascade = {  CascadeType.ALL  } )
+	 @JoinTable(
+	            name="VXF_VFIMAGES",
+	            joinColumns = @JoinColumn( name="VXF_ID"),
+	            inverseJoinColumns = @JoinColumn( name="IMAGE_ID")
+	    )
+	private Set<VFImage> vfimagesVDU = new HashSet<>();
 	
 	
 	/**
@@ -162,14 +170,14 @@ public class VxFMetadata extends Product{
 	/**
 	 * @return the vfimagesVDU
 	 */
-	public List<VFImage> getVfimagesVDU() {
+	public Set<VFImage> getVfimagesVDU() {
 		return vfimagesVDU;
 	}
 
 	/**
 	 * @param vfimagesVDU the vfimagesVDU to set
 	 */
-	public void setVfimagesVDU(List<VFImage> vfimagesVDU) {
+	public void setVfimagesVDU(Set<VFImage> vfimagesVDU) {
 		this.vfimagesVDU = vfimagesVDU;
 	}
 

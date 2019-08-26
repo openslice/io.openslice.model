@@ -16,7 +16,9 @@
 package io.openslice.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -25,6 +27,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import org.apache.commons.logging.Log;
@@ -48,16 +52,21 @@ public class Category {
 
 
 
-	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	private List<Product> products = new ArrayList<Product>();
+	@ManyToMany(cascade = { CascadeType.ALL })
+	 @JoinTable(
+		        name = "CATEGORY_PRODUCTS", 
+		        joinColumns = { @JoinColumn(name = "CAT_ID") }, 
+		        inverseJoinColumns = { @JoinColumn(name = "PROD_ID") }
+		    )
+	private Set<Product> products = new HashSet<Product>();
 	
 	
 	
-	public List<Product> getProducts() {
+	public Set<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
 
@@ -98,8 +107,8 @@ public class Category {
 	
 	public int getAppscount() {
 		int c = 0;
-		for (int i = 0; i < this.products.size(); i++) {
-			if (this.products.get(i) instanceof ExperimentMetadata)
+		for (Product p : products) {
+			if ( p  instanceof ExperimentMetadata)
 				c++;
 		}
 		return c;
@@ -107,10 +116,11 @@ public class Category {
 	
 	public int getVxFscount() {
 		int c = 0;
-		for (int i = 0; i < this.products.size(); i++) {
-			if (this.products.get(i) instanceof VxFMetadata)
+		for (Product p : products) {
+			if ( p  instanceof VxFMetadata)
 				c++;
 		}
+		
 		return c;
 	}
 	

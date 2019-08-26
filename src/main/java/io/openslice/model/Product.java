@@ -17,7 +17,9 @@ package io.openslice.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -83,8 +85,8 @@ public class Product {
 	@Basic()
 	private Date dateUpdated;
 
-	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	private List<Category> categories = new ArrayList<Category>();
+	@ManyToMany( mappedBy ="products" )
+	private Set<Category> categories = new HashSet<Category>();
 
 	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinTable()
@@ -241,11 +243,11 @@ public class Product {
 		this.dateUpdated = dateUpdated;
 	}
 
-	public List<Category> getCategories() {
+	public Set<Category> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(List<Category> categories) {
+	public void setCategories( Set<Category> categories) {
 		this.categories = categories;
 	}
 	

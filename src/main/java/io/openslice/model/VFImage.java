@@ -17,7 +17,9 @@ package io.openslice.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -73,12 +75,11 @@ public class VFImage {
 	@Basic()
 	private Date dateUpdated;
 	
-	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  } )
-	@JoinTable()
+	@ManyToMany(mappedBy = "vfimagesVDU")	 
 	private List<VxFMetadata> usedByVxFs = new ArrayList<>();
 	
 	@Transient
-	private List<RefVxF> refVxFs = new ArrayList<>();
+	private Set<RefVxF> refVxFs = new HashSet<>();
 	
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinColumns({ @JoinColumn() })
@@ -274,7 +275,7 @@ public class VFImage {
 	/**
 	 * @return the refVxFs
 	 */
-	public List<RefVxF> getRefVxFs() {
+	public Set<RefVxF> getRefVxFs() {
 		refVxFs.clear();
 		for (VxFMetadata vxf : usedByVxFs) {
 			RefVxF ref = new RefVxF( vxf.getId(), vxf.getName());
@@ -287,7 +288,7 @@ public class VFImage {
 	/**
 	 * @param refVxFs the refVxFs to set
 	 */
-	public void setRefVxFs(List<RefVxF> refVxFs) {
+	public void setRefVxFs(Set<RefVxF> refVxFs) {
 		this.refVxFs = refVxFs;
 	}
 
