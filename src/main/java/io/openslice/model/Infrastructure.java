@@ -206,12 +206,12 @@ public class Infrastructure {
 
 
 	/**
-	 * @param id2
+	 * @param l
 	 * @return
 	 */
-	public Object getSupportedImageById(int id2) {
+	public Object getSupportedImageById(long l) {
 		for (VFImage refVFImage : supportedImages) {
-			if ( refVFImage.getId() == id2  ){
+			if ( refVFImage.getId() == l  ){
 				return refVFImage;
 			}
 		}

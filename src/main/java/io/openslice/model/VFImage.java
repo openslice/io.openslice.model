@@ -50,7 +50,7 @@ public class VFImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id = 0;
+	private long id = 0;
 	
 	@Basic()
 	private String name = null;
@@ -104,14 +104,14 @@ public class VFImage {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

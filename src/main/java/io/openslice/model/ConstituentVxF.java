@@ -18,10 +18,10 @@ package io.openslice.model;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 
@@ -41,8 +41,8 @@ public class ConstituentVxF {
 	@Basic()
 	private String vnfdidRef;
 	
-	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH } )
-	@JoinTable( name = "VxFMetadata" )
+	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH } )
+	@JoinColumn(name = "vxf_id")
 	private VxFMetadata vxfref;
 
 	public int getMembervnfIndex() {
