@@ -67,12 +67,14 @@ public class VxFMetadata extends Product{
 	/**
 	 * 
 	 */
-	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  })
+	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE  })
 	@JoinTable()
 	private List<VxFOnBoardedDescriptor> vxfOnBoardedDescriptors = new ArrayList<VxFOnBoardedDescriptor>();
 	
-	 @ManyToMany(cascade = {   CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH  } )
-	 @JoinTable(
+	
+	
+	@ManyToMany(cascade = {   CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH  } )
+	@JoinTable(
 	            name="VXF_VFIMAGES",
 	            joinColumns = @JoinColumn( name="VXF_ID"),
 	            inverseJoinColumns = @JoinColumn( name="IMAGE_ID")
