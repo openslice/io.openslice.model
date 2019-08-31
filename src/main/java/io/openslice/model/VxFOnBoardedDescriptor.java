@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class VxFOnBoardedDescriptor extends OnBoardDescriptor{
 
 		
-	@ManyToOne(fetch = FetchType.LAZY )
+	@ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name = "vxf_id")
 	private VxFMetadata vxf;
 		
