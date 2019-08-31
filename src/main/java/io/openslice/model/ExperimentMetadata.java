@@ -68,8 +68,7 @@ public class ExperimentMetadata extends Product{
 	/**
 	 * 
 	 */
-	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  })
-	@JoinTable()
+	@OneToMany( mappedBy ="experiment", cascade = {  CascadeType.ALL  } , orphanRemoval = true)	
 	private List<ExperimentOnBoardDescriptor> experimentOnBoardDescriptors = new ArrayList<ExperimentOnBoardDescriptor>();
 	
 	/**

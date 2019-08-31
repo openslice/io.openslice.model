@@ -17,8 +17,10 @@ package io.openslice.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -34,9 +36,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class VxFOnBoardedDescriptor extends OnBoardDescriptor{
 
 		
-
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumns({ @JoinColumn() })
+	@ManyToOne(fetch = FetchType.LAZY )
+    @JoinColumn(name = "vxf_id")
 	private VxFMetadata vxf;
 		
 	

@@ -75,13 +75,13 @@ public class VFImage {
 	@Basic()
 	private Date dateUpdated;
 	
-	@ManyToMany(mappedBy = "vfimagesVDU")	 
+	@ManyToMany(mappedBy = "vfimagesVDU", cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH   })	 
 	private List<VxFMetadata> usedByVxFs = new ArrayList<>();
 	
 	@Transient
 	private Set<RefVxF> refVxFs = new HashSet<>();
 	
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  })
 	@JoinColumns({ @JoinColumn() })
 	private PortalUser owner = null;
 	
@@ -92,7 +92,7 @@ public class VFImage {
 	@Column(name = "TERMS", columnDefinition = "LONGTEXT")
 	private String termsOfUse;	
 	
-	@ManyToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  })
+	@ManyToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH   })
 	@JoinTable()
 	private List<Infrastructure> deployedInfrastructures = new ArrayList<>();
 
