@@ -36,7 +36,7 @@ public class ExperimentOnBoardDescriptor extends OnBoardDescriptor{
 
 		
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name = "experiment_id")
 	private ExperimentMetadata experiment;
 		
@@ -60,6 +60,7 @@ public class ExperimentOnBoardDescriptor extends OnBoardDescriptor{
 
 	public void setExperiment(ExperimentMetadata e) {
 		this.experiment = e;
+		this.tempExperimentID = e.getId();
 	}
 	
 		

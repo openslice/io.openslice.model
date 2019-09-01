@@ -59,11 +59,11 @@ public class DeploymentDescriptor {
 	private String name = null;
 	
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumns({ @JoinColumn() })
+    @JoinColumn(name = "mentor_id")
 	private PortalUser mentor = null;
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumns({ @JoinColumn() })
+    @JoinColumn(name = "infrastructure_for_all_id")
 	private Infrastructure infrastructureForAll = null;
 	
 	@Lob
@@ -95,16 +95,15 @@ public class DeploymentDescriptor {
 	private String instanceId;
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumns({ @JoinColumn() })
+    @JoinColumn(name = "experiment_id")
 	private ExperimentMetadata experiment = null;
 
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumns({ @JoinColumn() })
+    @JoinColumn(name = "owner_id")
 	private PortalUser owner = null;
 	
-	@OneToMany(cascade = { CascadeType.ALL })
-	@JoinTable()
+	@OneToMany(mappedBy ="id", cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<DeploymentDescriptorVxFPlacement> vxfPlacements = new ArrayList<DeploymentDescriptorVxFPlacement>();
 
 	@Basic()	

@@ -40,12 +40,12 @@ public class DeploymentDescriptorVxFPlacement {
 
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumns({ @JoinColumn() })
+	@JoinColumn(name = "constituent_vxf_id")
 	private ConstituentVxF constituentVxF = null;
 	
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumns({ @JoinColumn() })
+	@JoinColumn(name = "infrastructure_id")
 	private Infrastructure infrastructure = null;
 
 

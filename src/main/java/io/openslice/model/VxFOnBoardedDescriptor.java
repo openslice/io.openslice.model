@@ -60,6 +60,7 @@ public class VxFOnBoardedDescriptor extends OnBoardDescriptor{
 
 	public void setVxf(VxFMetadata vxf) {
 		this.vxf = vxf;
+		this.tempvxfID = vxf.getId();
 	}
 	
 		
