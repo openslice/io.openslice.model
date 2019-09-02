@@ -16,7 +16,9 @@
 package io.openslice.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -69,7 +71,7 @@ public class ExperimentMetadata extends Product{
 	 * 
 	 */
 	@OneToMany( mappedBy ="experiment", cascade = {  CascadeType.ALL  } , orphanRemoval = true)	
-	private List<ExperimentOnBoardDescriptor> experimentOnBoardDescriptors = new ArrayList<ExperimentOnBoardDescriptor>();
+	private Set<ExperimentOnBoardDescriptor> experimentOnBoardDescriptors = new HashSet<ExperimentOnBoardDescriptor>();
 	
 	/**
 	 * 
@@ -111,14 +113,14 @@ public class ExperimentMetadata extends Product{
 	/**
 	 * @return
 	 */
-	public List<ExperimentOnBoardDescriptor> getExperimentOnBoardDescriptors() {
+	public Set<ExperimentOnBoardDescriptor> getExperimentOnBoardDescriptors() {
 		return experimentOnBoardDescriptors;
 	}
 
 	/**
 	 * @param e
 	 */
-	public void setExperimentOnBoardDescriptors(List<ExperimentOnBoardDescriptor> e) {
+	public void setExperimentOnBoardDescriptors(Set<ExperimentOnBoardDescriptor> e) {
 		this.experimentOnBoardDescriptors = e;
 	}
 	

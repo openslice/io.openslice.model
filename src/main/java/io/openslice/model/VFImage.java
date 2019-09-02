@@ -368,7 +368,7 @@ public class VFImage {
 	 * @param id2
 	 * @return
 	 */
-	public Infrastructure getDeployedInfrastructureById(int id2) {
+	public Infrastructure getDeployedInfrastructureById(long id2) {
 		
 		for (Infrastructure infrastructure : deployedInfrastructures) {
 			if ( infrastructure.getId() == id2 ){

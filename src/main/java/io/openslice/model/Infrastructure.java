@@ -42,7 +42,7 @@ public class Infrastructure {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id = 0;
+	private long id = 0;
 
 	@Basic()
 	private String organization = null;
@@ -74,11 +74,11 @@ public class Infrastructure {
 		this.datacentername = datacentername;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

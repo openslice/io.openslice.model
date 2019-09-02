@@ -17,8 +17,10 @@ package io.openslice.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -103,7 +105,7 @@ public class PortalUser {
 
 	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  } )
 	@JoinTable()
-	private List<DeploymentDescriptor> deployments = new ArrayList<DeploymentDescriptor>();
+	private  Set<DeploymentDescriptor> deployments = new HashSet<DeploymentDescriptor>();
 	
 	@OneToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  } )
 	@JoinTable()
@@ -120,11 +122,11 @@ public class PortalUser {
 		this.subscribedResources = subscribedResources;
 	}
 
-	public List<DeploymentDescriptor> getDeployments() {
+	public Set<DeploymentDescriptor> getDeployments() {
 		return deployments;
 	}
 
-	public void setDeployments(List<DeploymentDescriptor> deployments) {
+	public void setDeployments(Set<DeploymentDescriptor> deployments) {
 		this.deployments = deployments;
 	}
 
