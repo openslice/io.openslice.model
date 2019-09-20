@@ -60,9 +60,13 @@ public class VxFMetadata extends Product{
 	/**
 	 * 
 	 */
-	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REFRESH })
-	@JoinTable()
-	private List<MANOplatform> supportedMANOPlatforms = new ArrayList<MANOplatform>();
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinTable(
+	        name = "PRODUCT_MANOPLATFORMS", 
+	        joinColumns = { @JoinColumn(name = "PROD_ID") }, 
+	        inverseJoinColumns = { @JoinColumn(name = "MANOPLATFORM_ID") }
+	    )
+	private Set<MANOplatform> supportedMANOPlatforms = new HashSet<MANOplatform>();
 
 	/**
 	 * 
@@ -142,14 +146,14 @@ public class VxFMetadata extends Product{
 	/**
 	 * @return
 	 */
-	public List<MANOplatform> getSupportedMANOPlatforms() {
+	public Set<MANOplatform> getSupportedMANOPlatforms() {
 		return supportedMANOPlatforms;
 	}
 
 	/**
 	 * @param supportedMANOPlatforms
 	 */
-	public void setSupportedMANOPlatforms(List<MANOplatform> supportedMANOPlatforms) {
+	public void setSupportedMANOPlatforms(Set<MANOplatform> supportedMANOPlatforms) {
 		this.supportedMANOPlatforms = supportedMANOPlatforms;
 	}
 
