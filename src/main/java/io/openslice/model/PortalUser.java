@@ -42,8 +42,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.CreationTimestamp;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -81,7 +79,9 @@ public class PortalUser {
 	private String currentSessionID = null;
 	@Basic()
 	private String apikey = null;
-	@CreationTimestamp
+
+
+	@Basic()
 	private Date createdAt;
 	
 	
