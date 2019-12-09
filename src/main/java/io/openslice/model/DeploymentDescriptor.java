@@ -108,7 +108,7 @@ public class DeploymentDescriptor {
     @JoinColumn(name = "owner_id")
 	private PortalUser owner = null;
 	
-	@OneToMany(mappedBy ="id", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  }, orphanRemoval = true)
 	private List<DeploymentDescriptorVxFPlacement> vxfPlacements = new ArrayList<DeploymentDescriptorVxFPlacement>();
 
 	@Basic()	

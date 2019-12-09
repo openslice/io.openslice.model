@@ -30,6 +30,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * @author ctranoris
@@ -49,12 +50,12 @@ public class DeploymentDescriptorVxFPlacement {
 
 
 
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "constituent_vxf_id")
 	private ConstituentVxF constituentVxF = null;
 	
 
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "infrastructure_id")
 	private Infrastructure infrastructure = null;
 
