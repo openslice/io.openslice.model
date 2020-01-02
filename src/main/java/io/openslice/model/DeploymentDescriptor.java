@@ -199,12 +199,12 @@ public class DeploymentDescriptor {
 	
 	
 	public PortalUser getOwner() {
-
+		if ( owner!=null ) {
+			PortalUser p = owner.getSnippedDetails();			
+			return p;			
+		}
 		
-		
-		PortalUser p = owner.getSnippedDetails();
-		
-		return p;
+		return null;
 	}
 
 	public void setOwner(PortalUser owner) {
