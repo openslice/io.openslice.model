@@ -174,7 +174,6 @@ public class MANOprovider implements IMANOprovider {
 	/**
 	 * @return the password
 	 */
-	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
