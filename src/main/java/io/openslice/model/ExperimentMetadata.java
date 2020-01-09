@@ -134,6 +134,12 @@ public class ExperimentMetadata extends Product{
 		this.experimentOnBoardDescriptors = e;
 	}
 	
+	/**
+	 * @return
+	 */
+	public Set<ExperimentOnBoardDescriptor> getExperimentfOnBoardDescriptors() {
+		return experimentOnBoardDescriptors;
+	}	
 
 
 	/**
