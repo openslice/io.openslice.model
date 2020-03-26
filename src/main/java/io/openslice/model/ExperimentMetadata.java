@@ -86,7 +86,7 @@ public class ExperimentMetadata extends Product{
 	/**
 	 * 
 	 */
-	@OneToMany(cascade = { CascadeType.ALL } )
+	@OneToMany( cascade = { CascadeType.ALL }, orphanRemoval = true)
 	@JoinTable()
 	private List<ConstituentVxF> constituentVxF = new ArrayList<ConstituentVxF>();
 	

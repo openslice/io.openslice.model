@@ -47,7 +47,7 @@ public class VxFMetadata extends Product{
 	/**
 	 * 
 	 */
-	private boolean certified;
+	private boolean certified=false;
 	
 	/**
 	 * 
@@ -125,6 +125,14 @@ public class VxFMetadata extends Product{
 		this.certified = certified;
 	}
 
+	/**
+	 * @return
+	 */
+	public boolean getCertified() {
+		return this.certified;
+	}
+
+	
 	/**
 	 * @return
 	 */
