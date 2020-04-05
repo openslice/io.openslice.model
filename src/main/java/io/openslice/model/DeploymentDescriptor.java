@@ -79,6 +79,10 @@ public class DeploymentDescriptor {
 	@Column(name = "FEEDBACK", columnDefinition = "LONGTEXT")
 	private String feedback = null;
 
+	@Lob
+	@Column(name = "INSTANTIATIONCONFIG", columnDefinition = "LONGTEXT")
+	private String instantiationconfig = null;
+
 	@Basic()
 	private DeploymentDescriptorStatus status = DeploymentDescriptorStatus.UNDER_REVIEW;			
 
@@ -343,4 +347,12 @@ public class DeploymentDescriptor {
 	public void setInstanceId(String instanceId) {
 		this.instanceId = instanceId;
 	}
+	
+	public String getInstantiationconfig() {
+		return instantiationconfig;
+	}
+
+	public void setInstantiationconfig(String instantiationconfig) {
+		this.instantiationconfig = instantiationconfig;
+	}	
 }
