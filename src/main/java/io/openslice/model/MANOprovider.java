@@ -87,6 +87,12 @@ public class MANOprovider implements IMANOprovider {
 	 */
 	@Basic()
 	private String password = null;
+
+	/**
+	 * OSM MANO project to use
+	 */
+	@Basic()
+	private String project = null;
 	
 	/**
 	 * password to connect
@@ -200,5 +206,15 @@ public class MANOprovider implements IMANOprovider {
 	 */
 	public void setEnabledForONBOARDING( Boolean enabledForONBOARDING) {
 		this.enabledForONBOARDING = enabledForONBOARDING;
-	}			
+	}
+	
+	public String getProject() {
+		return project;
+	}
+
+
+	public void setProject(String project) {
+		this.project = project;
+	}
+	
 }
