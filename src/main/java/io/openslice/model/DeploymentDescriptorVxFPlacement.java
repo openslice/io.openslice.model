@@ -50,7 +50,7 @@ public class DeploymentDescriptorVxFPlacement {
 
 
 
-	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH } )
+	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH }, orphanRemoval = true )
 	@JoinColumn(name = "constituent_vxf_id")
 	private ConstituentVxF constituentVxF = null;
 	
