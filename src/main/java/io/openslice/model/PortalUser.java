@@ -41,6 +41,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -64,15 +65,19 @@ public class PortalUser {
 	@Basic()
 	private String organization = null;
 	@Basic()
-	private String name = null;
+	private String firstname = null;
+	@Basic()
+	private String lastname = null;
 	@Basic()
 	private String email = null;
 	@Basic()
 	private String username = null;
-	@Basic()
+	
+	//we no longer store the password. This is stored to oauth service
+	@Transient
 	private String password = null;
-//	@Basic()
-//	private String role = null;
+	
+	
 	@Basic()	
 	private Boolean active = false;
 	@Basic()
@@ -85,6 +90,34 @@ public class PortalUser {
 	private Date createdAt;
 	
 	
+	/**
+	 * @return the firstname
+	 */
+	public String getFirstname() {
+		return firstname;
+	}
+
+	/**
+	 * @param firstname the firstname to set
+	 */
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	/**
+	 * @return the lastname
+	 */
+	public String getLastname() {
+		return lastname;
+	}
+
+	/**
+	 * @param lastname the lastname to set
+	 */
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
 	/**
 	 * 
 	 */
@@ -225,13 +258,10 @@ public class PortalUser {
 		return "PortalUser " + " [organization: " + getOrganization() + "]" + " [id: " + getId() + "]";
 	}
 
-	public String getName() {
-		return name;
-	}
+//	public String getName() {
+//		return firstname + " " + lastname ;
+//	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getUsername() {
 		return username;
@@ -250,15 +280,11 @@ public class PortalUser {
 	public void setPassword(String password) {
 
 		this.password = password;
-//		if ( (password!=null) && (!password.equals("")))//else will not change it
-//			this.password = EncryptionUtil.hash(password);
-//		
-//		//this.password = password;
 	}
 	
-	public void setPasswordUnencrypted(String password) {
-		this.password = password;
-	}
+//	public void setPasswordUnencrypted(String password) {
+//		this.password = password;
+//	}
 
 //	public VxFMetadata getVxFById(int vxfid) {
 //
@@ -363,7 +389,8 @@ public class PortalUser {
 		
 		SnipPortalUser p = new SnipPortalUser();
 		p.setId( this.getId() );
-		p.setName( this.getName() );
+		p.setFirstname( this.getFirstname() );
+		p.setLastname( this.getLastname());
 		p.setUsername(  this.getUsername() );
 		p.setOrganization( this.getOrganization() );
 		p.setEmail(this.getEmail());
