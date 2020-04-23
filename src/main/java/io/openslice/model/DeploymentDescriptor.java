@@ -102,6 +102,17 @@ public class DeploymentDescriptor {
 
 	@Basic()	
 	private String instanceId;
+	
+	@Basic()	
+	private String nsLcmOpOccId;
+
+	public String getNsLcmOpOccId() {
+		return nsLcmOpOccId;
+	}
+
+	public void setNsLcmOpOccId(String nsLcmOpOccId) {
+		this.nsLcmOpOccId = nsLcmOpOccId;
+	}
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
     @JoinColumn(name = "experiment_id")
@@ -149,7 +160,31 @@ public class DeploymentDescriptor {
 
 	@Basic()	
 	private String constituentVnfrIps;
+
+	@Lob
+	@Column(name = "LNSR", columnDefinition = "LONGTEXT")
+	private String nsr;
 	
+	@Lob
+	@Column(name = "LNSLCM_DETAILS", columnDefinition = "LONGTEXT")
+	private String ns_nslcm_details;
+		
+	public String getNs_nslcm_details() {
+		return ns_nslcm_details;
+	}
+
+	public void setNs_nslcm_details(String ns_nslcm_details) {
+		this.ns_nslcm_details = ns_nslcm_details;
+	}
+
+	public String getNsr() {
+		return nsr;
+	}
+
+	public void setNsr(String nsr) {
+		this.nsr = nsr;
+	}
+
 	public String getConstituentVnfrIps() {
 		return constituentVnfrIps;
 	}
