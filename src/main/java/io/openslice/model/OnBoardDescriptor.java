@@ -69,15 +69,6 @@ public class OnBoardDescriptor {
 	@Basic()
 	private String uuid = null;
 
-	/**
-	 * The name is a little bit misleading. However,
-	 * this field keeps the ID of a VxF or NSD as it is on the OSM TWO. In future OSM versions this perhaps
-	 * will be replaced by an ID
-	 */
-	
-	private String vxfMANOProviderID;	
-	
-
 	public OnBoardDescriptor() {		
 	}
 	
@@ -124,16 +115,6 @@ public class OnBoardDescriptor {
 		this.deployId = deployId;
 	}
 		
-	
-
-	public String getVxfMANOProviderID() {
-		return vxfMANOProviderID;
-	}
-
-	public void setVxfMANOProviderID(String vxfMANOProviderID) {
-		this.vxfMANOProviderID = vxfMANOProviderID;
-	}
-	
 	public String getUuid() {
 		return uuid;
 	}

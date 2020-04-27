@@ -39,13 +39,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(value = { "experiment" })
 
 public class ExperimentOnBoardDescriptor extends OnBoardDescriptor{
-
 		
-
 	@ManyToOne(fetch = FetchType.EAGER )
     @JoinColumn(name = "experiment_id")
-	private ExperimentMetadata experiment;
-		
+	private ExperimentMetadata experiment;		
 	
 	private String experimentMANOProviderID;	
 	
@@ -57,9 +54,7 @@ public class ExperimentOnBoardDescriptor extends OnBoardDescriptor{
 	public ExperimentOnBoardDescriptor(ExperimentMetadata v) {
 		this.experiment = v;
 	}
-
 	
-
 	public ExperimentMetadata getExperiment() {
 		return experiment;
 	}
@@ -68,8 +63,7 @@ public class ExperimentOnBoardDescriptor extends OnBoardDescriptor{
 		this.experiment = e;
 		this.tempExperimentID = e.getId();
 	}
-	
-		
+			
 	public long getExperimentid() {
 		if ( experiment != null ) {
 			return experiment.getId();
