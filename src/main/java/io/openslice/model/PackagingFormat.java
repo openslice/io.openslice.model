@@ -27,5 +27,6 @@ package io.openslice.model;
 public enum PackagingFormat {
 	OSMvFIVE,
 	OSMvFSIX,
-	OSMvSEVEN
+	OSMvSEVEN,
+	GenericSOL005
 }
