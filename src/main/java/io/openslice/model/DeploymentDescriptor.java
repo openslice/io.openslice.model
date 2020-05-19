@@ -29,6 +29,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -114,8 +115,10 @@ public class DeploymentDescriptor {
 		this.nsLcmOpOccId = nsLcmOpOccId;
 	}
 
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-    @JoinColumn(name = "experiment_id")
+//	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+//    @JoinColumn(name = "experiment_id")
+	@ManyToOne(optional=false)
+	@JoinColumn(name="experiment_id", foreignKey = @javax.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))	
 	private ExperimentMetadata experiment = null;
 
 

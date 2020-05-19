@@ -30,6 +30,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
@@ -82,6 +83,14 @@ public class ExperimentMetadata extends Product{
 	 */
 	@OneToMany( mappedBy ="experiment", cascade = {  CascadeType.ALL  } , orphanRemoval = true)	
 	private Set<ExperimentOnBoardDescriptor> experimentOnBoardDescriptors = new HashSet<ExperimentOnBoardDescriptor>();
+	
+	/**
+	 * 
+	 */
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@JoinColumn(name = "experiment", foreignKey = @javax.persistence.ForeignKey(name = "none"))	
+//	@OneToMany( mappedBy ="experiment", cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH } , orphanRemoval = false)	
+	private Set<DeploymentDescriptor> DeploymentDescriptors = new HashSet<DeploymentDescriptor>();
 	
 	/**
 	 * 
