@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  */
 @Entity(name = "ExperimentMetadata")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ExperimentMetadata extends Product{
 
 
@@ -85,12 +86,20 @@ public class ExperimentMetadata extends Product{
 	private Set<ExperimentOnBoardDescriptor> experimentOnBoardDescriptors = new HashSet<ExperimentOnBoardDescriptor>();
 	
 	/**
-	 * 
+	 *	USE THE FOLLOWING TO DISABLE FOREIGN KEY RESTRICTION ALONG WITH THE RELATED CAHNGE TO DeploymentDescriptor CLASS
 	 */
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
-	@JoinColumn(name = "experiment", foreignKey = @javax.persistence.ForeignKey(name = "none"))	
-//	@OneToMany( mappedBy ="experiment", cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH } , orphanRemoval = false)	
-	private Set<DeploymentDescriptor> DeploymentDescriptors = new HashSet<DeploymentDescriptor>();
+	//	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	//	@JoinColumn(name = "experiment", foreignKey = @javax.persistence.ForeignKey(name = "none"))	
+	//	private Set<DeploymentDescriptor> DeploymentDescriptors = new HashSet<DeploymentDescriptor>();
+	//
+	//	public Set<DeploymentDescriptor> getDeploymentDescriptors() {
+	//		return DeploymentDescriptors;
+	//	}
+	//
+	//	public void setDeploymentDescriptors(Set<DeploymentDescriptor> deploymentDescriptors) {
+	//		DeploymentDescriptors = deploymentDescriptors;
+	//	}
+
 	
 	/**
 	 * 
