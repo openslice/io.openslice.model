@@ -164,7 +164,9 @@ public class DeploymentDescriptor {
 		this.detailedStatus = detailedStatus;
 	}
 
-	@Basic()	
+
+	@Lob
+	@Column(name = "LCONSITVNFRIPS", columnDefinition = "LONGTEXT")	
 	private String constituentVnfrIps;
 
 	@Lob
