@@ -41,8 +41,6 @@ public class DeployArtifact {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id = 0;
-	
-
 
 	@Basic() 
 	private String uuid = null;

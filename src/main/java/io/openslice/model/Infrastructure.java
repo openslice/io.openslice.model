@@ -30,11 +30,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author ctranoris
@@ -61,6 +66,10 @@ public class Infrastructure {
 	
 	@Basic()
 	private String vimid = null;
+
+	@ManyToOne
+	@JoinColumn(name = "mp_id")
+	private MANOprovider mp = null;
 
 	@ManyToMany(cascade = {  CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinTable()
@@ -120,6 +129,14 @@ public class Infrastructure {
 		this.vimid = vimid;
 	}
 	
+	public MANOprovider getMp() {
+		return mp;
+	}
+
+	public void setMp(MANOprovider mp) {
+		this.mp = mp;
+	}
+
 	/**
 	 * @return the supportedImages
 	 */
@@ -132,9 +149,7 @@ public class Infrastructure {
 	 */
 	public void setSupportedImages(List<VFImage> supportedImages) {
 		this.supportedImages = supportedImages;
-	}
-
-	
+	}	
 
 	/**
 	 * @return the refSupportedImages
@@ -154,8 +169,6 @@ public class Infrastructure {
 	public void setRefSupportedImages(List<RefVFImage> refSupportedImages) {
 		this.refSupportedImages = refSupportedImages;
 	}
-
-
 
 	/**
 	 * Locally used to report back objects, otherwise the response would be recursive
@@ -223,4 +236,17 @@ public class Infrastructure {
 		return null;
 	}
 	
+	public String toJSON()
+	{
+		String jsonInString=null;
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setSerializationInclusion(Include.NON_NULL);
+		try {
+			jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return jsonInString;
+	}		
 }

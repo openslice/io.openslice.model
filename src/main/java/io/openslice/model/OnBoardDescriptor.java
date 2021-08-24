@@ -52,7 +52,7 @@ public class OnBoardDescriptor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id = 0;
 	
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@ManyToOne
 	@JoinColumns({ @JoinColumn() })
 	private MANOprovider obMANOprovider;
 

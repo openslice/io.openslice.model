@@ -21,6 +21,9 @@
 
 package io.openslice.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -59,8 +62,21 @@ public class MANOprovider implements IMANOprovider {
 	@Basic()
 	private String description = null;
 
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinTable()
+	private List<Infrastructure> vims = new ArrayList<Infrastructure>();
 
-    @ManyToOne
+    public List<Infrastructure> getVims() {
+		return vims;
+	}
+
+
+	public void setVims(List<Infrastructure> vims) {
+		this.vims = vims;
+	}
+
+
+	@ManyToOne
     @JoinColumn(name="MP_ID", nullable=false)
 	private MANOplatform supportedMANOplatform;
 	
