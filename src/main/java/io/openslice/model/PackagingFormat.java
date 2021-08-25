@@ -22,6 +22,8 @@ package io.openslice.model;
 
 /**
  * @author ctranoris
+ * 
+ * DO NOT DELETE THESE even the old ones. THEY AFFECT THE DB relationships
  *
  */
 public enum PackagingFormat {
