@@ -150,16 +150,8 @@ public class ExperimentMetadata extends Product{
 	 */
 	public void setExperimentOnBoardDescriptors(Set<ExperimentOnBoardDescriptor> e) {
 		this.experimentOnBoardDescriptors = e;
-	}
-	
-	/**
-	 * @return
-	 */
-	public Set<ExperimentOnBoardDescriptor> getExperimentfOnBoardDescriptors() {
-		return experimentOnBoardDescriptors;
 	}	
-
-
+	
 	/**
 	 * @return
 	 */
