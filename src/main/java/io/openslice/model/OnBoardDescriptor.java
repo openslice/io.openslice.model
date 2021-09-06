@@ -37,6 +37,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author ctranoris
@@ -67,6 +69,7 @@ public class OnBoardDescriptor {
 	private String feedbackMessage;
 
 	@Basic()
+	@Column(unique=true)
 	private String uuid = null;
 
 	public OnBoardDescriptor() {		
@@ -135,5 +138,17 @@ public class OnBoardDescriptor {
 	 */
 	public void setFeedbackMessage(String feedbackMessage) {
 		this.feedbackMessage = feedbackMessage;
+	}
+	
+	public String toJSON() {
+		String jsonInString = null;
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			jsonInString = mapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonInString;
 	}	
 }

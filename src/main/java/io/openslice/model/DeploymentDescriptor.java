@@ -42,6 +42,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 /**
@@ -71,6 +74,10 @@ public class DeploymentDescriptor {
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
     @JoinColumn(name = "infrastructure_for_all_id")
 	private Infrastructure infrastructureForAll = null;
+
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+    @JoinColumn(name = "obddescriptor_uuid")
+	private ExperimentOnBoardDescriptor obddescriptor_uuid = null;
 	
 	@Lob
 	@Column(name = "LDESCRIPTION", columnDefinition = "LONGTEXT")
@@ -383,6 +390,14 @@ public class DeploymentDescriptor {
 		this.infrastructureForAll = infrastructureForAll;
 	}
 	
+	public ExperimentOnBoardDescriptor getObddescriptor_uuid() {
+		return obddescriptor_uuid;
+	}
+
+	public void setObddescriptor_uuid(ExperimentOnBoardDescriptor obddescriptor_uuid) {
+		this.obddescriptor_uuid = obddescriptor_uuid;
+	}
+
 	public String getInstanceId() {
 		return instanceId;
 	}
@@ -397,5 +412,20 @@ public class DeploymentDescriptor {
 
 	public void setInstantiationconfig(String instantiationconfig) {
 		this.instantiationconfig = instantiationconfig;
-	}	
+	}
+
+	public String toJSON()
+	{
+		String jsonInString=null;
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setSerializationInclusion(Include.NON_NULL);
+		try {
+			jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return jsonInString;
+	}
+	
 }

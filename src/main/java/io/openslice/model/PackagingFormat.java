@@ -32,5 +32,6 @@ public enum PackagingFormat {
 	OSMvSEVEN,
 	GenericSOL005,
 	OSMvEIGHT,
-	OSMvNINE
+	OSMvNINE,
+	OSMvTEN
 }
