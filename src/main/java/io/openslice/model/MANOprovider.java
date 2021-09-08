@@ -38,6 +38,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author ctranoris
@@ -62,9 +63,26 @@ public class MANOprovider implements IMANOprovider {
 	@Basic()
 	private String description = null;
 
-	@OneToMany(mappedBy ="mp",  cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@OneToMany(mappedBy ="mp",  cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, fetch = FetchType.EAGER)
 	private List<Infrastructure> vims = new ArrayList<Infrastructure>();
 
+
+	@JsonProperty("vims")
+	public List<Infrastructure> getVimsID() {
+		
+		List<Infrastructure> vimsids = new ArrayList<>();
+		for (Infrastructure infrastructure : vims) {
+			Infrastructure in = new Infrastructure();
+			in.setName( infrastructure.getName() );
+			in.setId(infrastructure.getId());
+			in.setVIMid(infrastructure.getVIMid());
+			vimsids.add(in);
+		}
+		
+		return vimsids;
+	}
+
+	
     public List<Infrastructure> getVims() {
 		return vims;
 	}
