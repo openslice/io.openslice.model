@@ -62,8 +62,7 @@ public class MANOprovider implements IMANOprovider {
 	@Basic()
 	private String description = null;
 
-	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinTable()
+	@OneToMany(mappedBy ="mp",  cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	private List<Infrastructure> vims = new ArrayList<Infrastructure>();
 
     public List<Infrastructure> getVims() {
