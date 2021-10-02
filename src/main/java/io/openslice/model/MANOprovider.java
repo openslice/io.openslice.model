@@ -32,12 +32,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -71,14 +67,16 @@ public class MANOprovider implements IMANOprovider {
 	public List<Infrastructure> getVimsID() {
 		
 		List<Infrastructure> vimsids = new ArrayList<>();
-		for (Infrastructure infrastructure : vims) {
-			Infrastructure in = new Infrastructure();
-			in.setName( infrastructure.getName() );
-			in.setId(infrastructure.getId());
-			in.setVIMid(infrastructure.getVIMid());
-			vimsids.add(in);
+		if(this.vims!=null)
+		{
+			for (Infrastructure infrastructure : vims) {
+				Infrastructure in = new Infrastructure();
+				in.setName( infrastructure.getName() );
+				in.setId(infrastructure.getId());
+				in.setVIMid(infrastructure.getVIMid());
+				vimsids.add(in);
+			}
 		}
-		
 		return vimsids;
 	}
 
