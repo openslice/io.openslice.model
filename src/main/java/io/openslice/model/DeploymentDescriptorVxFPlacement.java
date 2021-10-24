@@ -21,7 +21,11 @@
 
 package io.openslice.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,27 +33,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-/**
- * @author ctranoris
- *
- */
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * @author ctranoris
  *
  */
 @Entity(name = "DeploymentDescriptorVxFPlacement")
-public class DeploymentDescriptorVxFPlacement {
+public class DeploymentDescriptorVxFPlacement implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 719321004307067543L;
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id = 0;
 
-
-
+	
 	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH }, orphanRemoval = true )
 	@JoinColumn(name = "constituent_vxf_id")
 	private ConstituentVxF constituentVxF = null;
@@ -58,7 +68,7 @@ public class DeploymentDescriptorVxFPlacement {
 	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "infrastructure_id")
 	private Infrastructure infrastructure = null;
-
+	
 
 	public ConstituentVxF getConstituentVxF() {
 		return constituentVxF;
@@ -79,6 +89,17 @@ public class DeploymentDescriptorVxFPlacement {
 		this.infrastructure = infrastructure;
 	}
 	
-	
-	
+	public String toJSON()
+	{
+		String jsonInString=null;
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setSerializationInclusion(Include.NON_NULL);
+		try {
+			jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return jsonInString;
+	}		
 }
