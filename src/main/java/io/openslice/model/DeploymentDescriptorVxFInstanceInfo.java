@@ -2,6 +2,7 @@ package io.openslice.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,6 +33,17 @@ public class DeploymentDescriptorVxFInstanceInfo implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id = 0;
     
+	@Basic()
+	private String memberVnfIndexRef = null;	
+	
+	public String getMemberVnfIndexRef() {
+		return memberVnfIndexRef;
+	}
+
+	public void setMemberVnfIndexRef(String memberVnfIndexRef) {
+		this.memberVnfIndexRef = memberVnfIndexRef;
+	}
+
 	@Lob
 	@Column(columnDefinition = "LONGTEXT")	
 	private String vxfInstanceInfo = null;
