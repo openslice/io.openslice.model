@@ -59,7 +59,7 @@ public class MANOprovider implements IMANOprovider {
 	@Basic()
 	private String description = null;
 
-	@OneToMany(mappedBy ="mp",  cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy ="mp", fetch = FetchType.EAGER)
 	private List<Infrastructure> vims = new ArrayList<Infrastructure>();
 
 
@@ -74,6 +74,7 @@ public class MANOprovider implements IMANOprovider {
 				in.setName( infrastructure.getName() );
 				in.setId(infrastructure.getId());
 				in.setVIMid(infrastructure.getVIMid());
+				in.setDatacentername(infrastructure.getDatacentername());
 				vimsids.add(in);
 			}
 		}
