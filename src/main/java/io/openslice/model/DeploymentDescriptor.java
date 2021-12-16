@@ -20,11 +20,13 @@
 
 package io.openslice.model;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -53,8 +55,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @Entity(name = "DeploymentDescriptor")
 @JsonIgnoreProperties(ignoreUnknown=true, value = { "ExperimentFullDetails" })
-public class DeploymentDescriptor {
+public class DeploymentDescriptor implements Serializable{
 	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2274390183349399598L;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -136,8 +144,20 @@ public class DeploymentDescriptor {
     @JoinColumn(name = "owner_id")
 	private PortalUser owner = null;
 	
-	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH  }, orphanRemoval = true)
+	@OneToMany(cascade = { CascadeType.ALL  }, orphanRemoval = true)
 	private List<DeploymentDescriptorVxFPlacement> vxfPlacements = new ArrayList<DeploymentDescriptorVxFPlacement>();
+
+	@OneToMany(cascade = { CascadeType.ALL  }, orphanRemoval = true)
+    private Set<DeploymentDescriptorVxFInstanceInfo> deploymentDescriptorVxFInstanceInfo;
+        
+	public Set<DeploymentDescriptorVxFInstanceInfo> getDeploymentDescriptorVxFInstanceInfo() {
+		return deploymentDescriptorVxFInstanceInfo;
+	}
+
+	public void setDeploymentDescriptorVxFInstanceInfo(
+			Set<DeploymentDescriptorVxFInstanceInfo> deploymentDescriptorVxFInstanceInfo) {
+		this.deploymentDescriptorVxFInstanceInfo = deploymentDescriptorVxFInstanceInfo;
+	}
 
 	@Basic()	
 	private String operationalStatus;

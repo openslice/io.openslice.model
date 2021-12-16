@@ -59,7 +59,7 @@ public class MANOprovider implements IMANOprovider {
 	@Basic()
 	private String description = null;
 
-	@OneToMany(mappedBy ="mp",  cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy ="mp", fetch = FetchType.EAGER)
 	private List<Infrastructure> vims = new ArrayList<Infrastructure>();
 
 
@@ -74,6 +74,7 @@ public class MANOprovider implements IMANOprovider {
 				in.setName( infrastructure.getName() );
 				in.setId(infrastructure.getId());
 				in.setVIMid(infrastructure.getVIMid());
+				in.setDatacentername(infrastructure.getDatacentername());
 				vimsids.add(in);
 			}
 		}
@@ -130,6 +131,8 @@ public class MANOprovider implements IMANOprovider {
 	 */
 	@Basic()
 	private Boolean enabledForONBOARDING = null;
+	@Basic()
+	private Boolean enabledForSYNC = null;
 
 
 	public String getAuthorizationBasicHeader() {
@@ -230,8 +233,6 @@ public class MANOprovider implements IMANOprovider {
 	public Boolean getEnabledForONBOARDING() {
 		return enabledForONBOARDING;
 	}
-
-
 	/**
 	 * @param enabledForONBOARDING the enabledForONBOARDING to set
 	 */
@@ -239,10 +240,23 @@ public class MANOprovider implements IMANOprovider {
 		this.enabledForONBOARDING = enabledForONBOARDING;
 	}
 	
+	/**
+	 * @return the enabledForSYNC
+	 */
+	public Boolean getEnabledForSYNC() {
+		return enabledForSYNC;
+	}
+	/**
+	 * @param enabledForSYNC the enabledForSYNC to set
+	 */
+	public void setEnabledForSYNC( Boolean enabledForSYNC) {
+		this.enabledForSYNC = enabledForSYNC;
+	}
+	
+	
 	public String getProject() {
 		return project;
 	}
-
 
 	public void setProject(String project) {
 		this.project = project;
