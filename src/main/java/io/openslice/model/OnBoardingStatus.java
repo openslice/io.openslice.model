@@ -32,5 +32,5 @@ public enum OnBoardingStatus {
 	OFFBOARDED,
 	OFFBOARDING,
 	ONBOARDING,
-	ORPHANED
+	OSM_MISSING
 }
