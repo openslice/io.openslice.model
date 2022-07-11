@@ -61,6 +61,8 @@ public class Infrastructure {
 	@Basic()
 	private String email = null;
 	
+	private InfrastructureStatus infrastructureStatus = InfrastructureStatus.UNKNOWN;
+	
 	@Basic()
 	private String datacentername = null;
 	
@@ -222,6 +224,13 @@ public class Infrastructure {
 	}
 
 
+	public InfrastructureStatus getInfrastructureStatus() {
+		return infrastructureStatus;
+	}
+
+	public void setInfrastructureStatus(InfrastructureStatus infrastructureStatus) {
+		this.infrastructureStatus = infrastructureStatus;
+	}
 
 	/**
 	 * @param l
