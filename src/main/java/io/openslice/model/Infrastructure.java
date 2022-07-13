@@ -21,6 +21,7 @@
 package io.openslice.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -60,8 +61,11 @@ public class Infrastructure {
 	private String name = null;
 	@Basic()
 	private String email = null;
-	
+	@Basic()	
 	private InfrastructureStatus infrastructureStatus = InfrastructureStatus.UNKNOWN;
+
+	@Basic()
+	private Date dateCreated;
 	
 	@Basic()
 	private String datacentername = null;
@@ -82,6 +86,14 @@ public class Infrastructure {
 	private List<RefVFImage> refSupportedImages = new ArrayList<>();
 	
 
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+	
 	public String getDatacentername() {
 		return datacentername;
 	}
