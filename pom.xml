@@ -21,7 +21,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring.boot-version>${spring-boot-version}</spring.boot-version>
 		<spring.cloud-consul-version>${spring-cloud-consul-version}</spring.cloud-consul-version>
-		<shiro.version>1.8.0</shiro.version>
+		<shiro.version>1.10.0</shiro.version>
 	</properties>
 
 
