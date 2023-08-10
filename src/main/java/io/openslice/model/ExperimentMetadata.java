@@ -26,13 +26,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -89,7 +89,7 @@ public class ExperimentMetadata extends Product{
 	 *	USE THE FOLLOWING TO DISABLE FOREIGN KEY RESTRICTION ALONG WITH THE RELATED CAHNGE TO DeploymentDescriptor CLASS
 	 */
 	//	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
-	//	@JoinColumn(name = "experiment", foreignKey = @javax.persistence.ForeignKey(name = "none"))	
+	//	@JoinColumn(name = "experiment", foreignKey = @jakarta.persistence.ForeignKey(name = "none"))	
 	//	private Set<DeploymentDescriptor> DeploymentDescriptors = new HashSet<DeploymentDescriptor>();
 	//
 	//	public Set<DeploymentDescriptor> getDeploymentDescriptors() {
