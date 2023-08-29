@@ -34,5 +34,6 @@ public enum PackagingFormat {
 	OSMvEIGHT,
 	OSMvNINE,
 	OSMvTEN,
-	OSMvELEVEN 
+	OSMvELEVEN, 
+	OSMvTHIRTEEN
 }

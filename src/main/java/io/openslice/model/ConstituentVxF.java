@@ -40,7 +40,7 @@ public class ConstituentVxF {
 	private long id = 0;
 
 	@Basic()
-	private int membervnfIndex;
+	private String membervnfIndex;
 
 	@Basic()
 	private String vnfdidRef;
@@ -49,11 +49,11 @@ public class ConstituentVxF {
 	@JoinColumn(name = "vxf_id")
 	private VxFMetadata vxfref;
 
-	public int getMembervnfIndex() {
+	public String getMembervnfIndex() {
 		return membervnfIndex;
 	}
 
-	public void setMembervnfIndex(int membervnfIndex) {
+	public void setMembervnfIndex(String membervnfIndex) {
 		this.membervnfIndex = membervnfIndex;
 	}
 
