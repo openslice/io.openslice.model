@@ -60,12 +60,12 @@ public class DeploymentDescriptorVxFPlacement implements Serializable{
 	private long id = 0;
 
 	
-	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH }, orphanRemoval = true )
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "constituent_vxf_id")
 	private ConstituentVxF constituentVxF = null;
 	
 
-	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH } )
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH } )
 	@JoinColumn(name = "infrastructure_id")
 	private Infrastructure infrastructure = null;
 	
