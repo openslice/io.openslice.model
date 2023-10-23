@@ -39,6 +39,7 @@ import jakarta.persistence.ManyToMany;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name = "Category")
@@ -110,6 +111,7 @@ public class Category {
 		}		
 	}
 	
+	@JsonIgnore
 	public int getAppscount() {
 		int c = 0;
 		for (Product p : products) {
@@ -118,7 +120,7 @@ public class Category {
 		}
 		return c;
 	}
-	
+	@JsonIgnore
 	public int getVxFscount() {
 		int c = 0;
 		for (Product p : products) {
@@ -130,7 +132,7 @@ public class Category {
 	}
 	
 	
-	
+	@JsonIgnore
 	public int getProductsCount() {
 		return products.size();
 	}
