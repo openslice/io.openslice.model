@@ -25,27 +25,28 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name = "Category")
 @JsonIgnoreProperties(value = {  "products" }, ignoreUnknown = true )
 public class Category {
 
-	private static final transient Log logger = LogFactory.getLog(Category.class.getName());
+	private static final transient Logger logger = LoggerFactory.getLogger(Category.class.getName());
 	
 	
 	@Id
@@ -110,6 +111,7 @@ public class Category {
 		}		
 	}
 	
+	@JsonIgnore
 	public int getAppscount() {
 		int c = 0;
 		for (Product p : products) {
@@ -118,7 +120,7 @@ public class Category {
 		}
 		return c;
 	}
-	
+	@JsonIgnore
 	public int getVxFscount() {
 		int c = 0;
 		for (Product p : products) {
@@ -130,7 +132,7 @@ public class Category {
 	}
 	
 	
-	
+	@JsonIgnore
 	public int getProductsCount() {
 		return products.size();
 	}

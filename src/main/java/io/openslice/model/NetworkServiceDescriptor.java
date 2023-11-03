@@ -19,7 +19,7 @@
  */
 package io.openslice.model;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 /**
  * @author ctranoris

@@ -21,20 +21,20 @@
 package io.openslice.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -60,6 +60,11 @@ public class Infrastructure {
 	private String name = null;
 	@Basic()
 	private String email = null;
+	@Basic()	
+	private InfrastructureStatus infrastructureStatus = InfrastructureStatus.UNKNOWN;
+
+	@Basic()
+	private Date dateCreated;
 	
 	@Basic()
 	private String datacentername = null;
@@ -80,6 +85,14 @@ public class Infrastructure {
 	private List<RefVFImage> refSupportedImages = new ArrayList<>();
 	
 
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+	
 	public String getDatacentername() {
 		return datacentername;
 	}
@@ -222,6 +235,13 @@ public class Infrastructure {
 	}
 
 
+	public InfrastructureStatus getInfrastructureStatus() {
+		return infrastructureStatus;
+	}
+
+	public void setInfrastructureStatus(InfrastructureStatus infrastructureStatus) {
+		this.infrastructureStatus = infrastructureStatus;
+	}
 
 	/**
 	 * @param l
